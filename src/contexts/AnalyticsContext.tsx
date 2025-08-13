@@ -172,11 +172,34 @@ export const AnalyticsProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   }, [state]);
 
   const calculateWeeklyScore = () => {
-    // This would typically use task and timer data
-    // For now, return a basic calculation
-    const baseScore = Math.floor(Math.random() * 4) + 7; // 7-10 range
-    dispatch({ type: 'UPDATE_WEEKLY_SCORE', payload: baseScore });
-    return baseScore;
+    const { tasks } = useTask();
+    const { getSessionsToday } = useTimer();
+    
+    // Get this week's tasks
+    const now = new Date();
+    const startOfWeek = new Date(now.getFullYear(), now.getDay() === 0 ? now.getDate() - 6 : now.getDate() - now.getDay(), 1);
+    const endOfWeek = new Date(startOfWeek.getTime() + 7 * 24 * 60 * 60 * 1000);
+    
+    const thisWeeksTasks = tasks.filter(task => {
+      const taskDate = new Date(task.createdAt);
+      return taskDate >= startOfWeek && taskDate < endOfWeek;
+    });
+    
+    const completedTasks = thisWeeksTasks.filter(task => task.completed);
+    const completionRate = thisWeeksTasks.length > 0 ? completedTasks.length / thisWeeksTasks.length : 0;
+    
+    // Calculate score based on completion rate and other factors
+    let score = Math.round(completionRate * 10); // Base score from completion rate
+    
+    // Bonus points for consistency
+    if (thisWeeksTasks.length >= 5) score += 1;
+    if (completionRate >= 0.8) score += 1;
+    
+    // Ensure score is between 1-10
+    score = Math.max(1, Math.min(10, score));
+    
+    dispatch({ type: 'UPDATE_WEEKLY_SCORE', payload: score });
+    return score;
   };
 
   const generateWeeklyInsights = () => {

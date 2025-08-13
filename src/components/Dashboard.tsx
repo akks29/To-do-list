@@ -9,7 +9,8 @@ import {
   Plus,
   Play,
   Calendar,
-  Award
+  Award,
+  Timer
 } from 'lucide-react';
 import { useTask } from '../contexts/TaskContext';
 import { useTimer } from '../contexts/TimerContext';
@@ -72,8 +73,9 @@ const Dashboard: React.FC = () => {
     completeTask(taskId, actualTime);
   };
 
-  const handleStartFocus = (taskId?: string) => {
-    startFocusSession(taskId);
+  const handleStartFocus = (taskId: string) => {
+    // Just log for now - the inline timer will handle the focus session
+    console.log('Start focus for task:', taskId);
   };
 
   return (

@@ -270,95 +270,10 @@ const InsightsView: React.FC = () => {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Weekly Performance Score */}
-            <div className="bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl shadow-sm p-6 text-white">
-              <h3 className="font-semibold mb-4 flex items-center">
-                <Brain className="w-5 h-5 mr-2" />
-                Weekly Performance
-              </h3>
-              <div className="text-center mb-4">
-                <div className="text-4xl font-bold mb-2">{weeklyScore}/10</div>
-                <p className="opacity-90">Cognitive Performance Score</p>
-              </div>
-              <div className="bg-white bg-opacity-20 rounded-full h-2">
-                <div 
-                  className="bg-white h-2 rounded-full transition-all duration-500"
-                  style={{ width: `${(weeklyScore / 10) * 100}%` }}
-                ></div>
-              </div>
-            </div>
-
-            {/* AI Insights */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <Lightbulb className="w-5 h-5 text-yellow-600 mr-2" />
-                Weekly Insights
-              </h3>
-              <div className="space-y-3">
-                {weeklyInsights.map((insight, index) => (
-                  <div key={index} className="p-3 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg border-l-3 border-yellow-400">
-                    <p className="text-sm text-gray-700">{insight}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Achievements */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <Award className="w-5 h-5 text-yellow-600 mr-2" />
-                Achievements
-              </h3>
-              <div className="space-y-3">
-                {analyticsState.achievements
-                  .filter(achievement => achievement.progress > 0)
-                  .slice(0, 4)
-                  .map((achievement) => (
-                    <div key={achievement.id} className="flex items-center justify-between">
-                      <div className="flex items-center space-x-3">
-                        <span className="text-xl">{achievement.icon}</span>
-                        <div>
-                          <p className="font-medium text-gray-900 text-sm">{achievement.name}</p>
-                          <p className="text-xs text-gray-600">{achievement.description}</p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <div className="w-16 bg-gray-200 rounded-full h-1.5">
-                          <div
-                            className="bg-yellow-500 h-1.5 rounded-full"
-                            style={{ width: `${(achievement.progress / achievement.maxProgress) * 100}%` }}
-                          ></div>
-                        </div>
-                        <span className="text-xs text-gray-500 mt-1">
-                          {achievement.progress}/{achievement.maxProgress}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="bg-white rounded-xl shadow-sm p-6">
-              <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <Zap className="w-5 h-5 text-blue-600 mr-2" />
-                Productivity Boost
-              </h3>
-              <div className="space-y-3">
-                <button className="w-full p-3 bg-blue-50 hover:bg-blue-100 rounded-lg transition-colors text-left">
-                  <p className="font-medium text-blue-700">Schedule Focus Block</p>
-                  <p className="text-sm text-blue-600">Plan a 2-hour deep work session</p>
-                </button>
-                <button className="w-full p-3 bg-green-50 hover:bg-green-100 rounded-lg transition-colors text-left">
-                  <p className="font-medium text-green-700">Review & Estimate</p>
-                  <p className="text-sm text-green-600">Improve time estimation accuracy</p>
-                </button>
-                <button className="w-full p-3 bg-purple-50 hover:bg-purple-100 rounded-lg transition-colors text-left">
-                  <p className="font-medium text-purple-700">Energy Assessment</p>
-                  <p className="text-sm text-purple-600">Track daily energy patterns</p>
-                </button>
-              </div>
-            </div>
+            {/* Weekly Performance Score - REMOVED */}
+            {/* Weekly Insights - REMOVED */}
+            {/* Achievements - REMOVED */}
+            {/* Productivity Boost - REMOVED */}
           </div>
         </div>
       </div>

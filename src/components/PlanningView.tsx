@@ -358,6 +358,8 @@ const PlanningView: React.FC = () => {
                     capacity={block.capacity}
                     tasks={block.tasks}
                     onComplete={completeTask}
+                    onStartFocus={(taskId) => console.log('Start focus for task:', taskId)}  
+
                   />
                 ))}
               </div>
@@ -382,6 +384,7 @@ const PlanningView: React.FC = () => {
                             key={task.id}
                             task={task}
                             onComplete={completeTask}
+                            onStartFocus={(taskId) => console.log('Start focus for task:', taskId)}
                             compact
                           />
                         ))}
